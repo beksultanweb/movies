@@ -1,7 +1,8 @@
 class Api::V1::RequestsController < ApplicationController
 
 	before_action :find_city, except: :cities
-
+    before_action :check_token, except: :cities
+    
   def cities
   	cities = City.all
   	render json: cities, only: [:name, :id]
